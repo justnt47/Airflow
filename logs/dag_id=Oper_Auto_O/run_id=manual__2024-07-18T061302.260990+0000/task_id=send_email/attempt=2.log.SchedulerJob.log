@@ -1,0 +1,1 @@
+[2024-07-18T06:15:10.015+0000] {task_context_logger.py:104} ERROR - Executor reports task instance <TaskInstance: Oper_Auto_O.send_email manual__2024-07-18T06:13:02.260990+00:00 [queued]> finished (failed) although the task says it's queued. (Info: None) Was the task killed externally?

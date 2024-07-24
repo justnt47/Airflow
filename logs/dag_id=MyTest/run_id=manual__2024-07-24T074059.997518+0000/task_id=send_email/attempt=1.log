@@ -1,0 +1,21 @@
+[2024-07-24T07:41:06.452+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-24T07:41:06.474+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: MyTest.send_email manual__2024-07-24T07:40:59.997518+00:00 [queued]>
+[2024-07-24T07:41:06.483+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: MyTest.send_email manual__2024-07-24T07:40:59.997518+00:00 [queued]>
+[2024-07-24T07:41:06.483+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-07-24T07:41:06.497+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): send_email> on 2024-07-24 07:40:59.997518+00:00
+[2024-07-24T07:41:06.505+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:62: DeprecationWarning: This process (pid=4439) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-24T07:41:06.506+0000] {standard_task_runner.py:64} INFO - Started process 4442 to run task
+[2024-07-24T07:41:06.507+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'MyTest', 'send_email', 'manual__2024-07-24T07:40:59.997518+00:00', '--job-id', '100', '--raw', '--subdir', 'DAGS_FOLDER/MyTest.py', '--cfg-path', '/tmp/tmp9_54urab']
+[2024-07-24T07:41:06.507+0000] {standard_task_runner.py:91} INFO - Job 100: Subtask send_email
+[2024-07-24T07:41:06.544+0000] {task_command.py:426} INFO - Running <TaskInstance: MyTest.send_email manual__2024-07-24T07:40:59.997518+00:00 [running]> on host ed4de24231fa
+[2024-07-24T07:41:06.688+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='MyTest' AIRFLOW_CTX_DAG_ID='MyTest' AIRFLOW_CTX_TASK_ID='send_email' AIRFLOW_CTX_EXECUTION_DATE='2024-07-24T07:40:59.997518+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-07-24T07:40:59.997518+00:00'
+[2024-07-24T07:41:06.689+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-24T07:41:06.702+0000] {logging_mixin.py:188} INFO - เกิดข้อผิดพลาดในการส่งอีเมล: unknown encoding: plain
+[2024-07-24T07:41:06.703+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-07-24T07:41:06.703+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-24T07:41:06.711+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=MyTest, task_id=send_email, run_id=manual__2024-07-24T07:40:59.997518+00:00, execution_date=20240724T074059, start_date=20240724T074106, end_date=20240724T074106
+[2024-07-24T07:41:06.760+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2024-07-24T07:41:06.776+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-07-24T07:41:06.778+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

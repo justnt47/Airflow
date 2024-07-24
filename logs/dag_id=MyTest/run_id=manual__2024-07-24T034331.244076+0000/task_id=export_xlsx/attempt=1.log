@@ -1,0 +1,57 @@
+[2024-07-24T03:43:35.939+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-24T03:43:35.965+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: MyTest.export_xlsx manual__2024-07-24T03:43:31.244076+00:00 [queued]>
+[2024-07-24T03:43:35.973+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: MyTest.export_xlsx manual__2024-07-24T03:43:31.244076+00:00 [queued]>
+[2024-07-24T03:43:35.974+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-07-24T03:43:35.989+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): export_xlsx> on 2024-07-24 03:43:31.244076+00:00
+[2024-07-24T03:43:35.998+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:62: DeprecationWarning: This process (pid=1138) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-24T03:43:35.999+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'MyTest', 'export_xlsx', 'manual__2024-07-24T03:43:31.244076+00:00', '--job-id', '67', '--raw', '--subdir', 'DAGS_FOLDER/MyTest.py', '--cfg-path', '/tmp/tmp0k08q6_4']
+[2024-07-24T03:43:36.000+0000] {standard_task_runner.py:64} INFO - Started process 1141 to run task
+[2024-07-24T03:43:36.000+0000] {standard_task_runner.py:91} INFO - Job 67: Subtask export_xlsx
+[2024-07-24T03:43:36.048+0000] {task_command.py:426} INFO - Running <TaskInstance: MyTest.export_xlsx manual__2024-07-24T03:43:31.244076+00:00 [running]> on host ed4de24231fa
+[2024-07-24T03:43:36.213+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='MyTest' AIRFLOW_CTX_DAG_ID='MyTest' AIRFLOW_CTX_TASK_ID='export_xlsx' AIRFLOW_CTX_EXECUTION_DATE='2024-07-24T03:43:31.244076+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-07-24T03:43:31.244076+00:00'
+[2024-07-24T03:43:36.215+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-24T03:43:36.216+0000] {logging_mixin.py:188} INFO - <class 'str'>
+[2024-07-24T03:43:36.219+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-24T03:43:36.220+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/MyTest.py", line 110, in export_xlsx_func
+    df = pd.read_csv(df,sep=" ")
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/parsers/readers.py", line 611, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/parsers/readers.py", line 1705, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/common.py", line 863, in get_handle
+    handle = open(
+             ^^^^^
+OSError: [Errno 36] File name too long: '   PROSPECTID       PROSPECTFULLNAME  ...    SALETYPE TEAMSTATUS\n0          62        นายรวี สินบำรุง  ...     ต่ออายุ   Customer\n1          61        นายรวี สินบำรุง  ...     ต่ออายุ   Customer\n2          52     นายคาริวัล ทองโสภา  ...  ประกันใหม่   Customer\n3          43  นางสาวนัทฎิชา สิริกุล  ...     ต่ออายุ   Customer\n4          42  นางสาวนัทฎิชา สิริกุล  ...     ต่ออายุ   Customer\n5          41          CompanyNameTH  ...     ต่ออายุ   Customer\n6          23         นายทดสอบ ทดสอบ  ...     ต่ออายุ      Other\n7          22  นายนันทิพัฒน์ ทวะบุรี  ...     ต่ออายุ   Customer\n8          19  นายนันทวัฒน์ ข้าวสาลี  ...     ต่ออายุ   Customer\n9          18         นายทดสอบ ทดสอบ  ...     ต่ออายุ   Customer\n\n[10 rows x 7 columns]'
+[2024-07-24T03:43:36.234+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=MyTest, task_id=export_xlsx, run_id=manual__2024-07-24T03:43:31.244076+00:00, execution_date=20240724T034331, start_date=20240724T034335, end_date=20240724T034336
+[2024-07-24T03:43:36.247+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 67 for task export_xlsx ([Errno 36] File name too long: '   PROSPECTID       PROSPECTFULLNAME  ...    SALETYPE TEAMSTATUS\n0          62        นายรวี สินบำรุง  ...     ต่ออายุ   Customer\n1          61        นายรวี สินบำรุง  ...     ต่ออายุ   Customer\n2          52     นายคาริวัล ทองโสภา  ...  ประกันใหม่   Customer\n3          43  นางสาวนัทฎิชา สิริกุล  ...     ต่ออายุ   Customer\n4          42  นางสาวนัทฎิชา สิริกุล  ...     ต่ออายุ   Customer\n5          41          CompanyNameTH  ...     ต่ออายุ   Customer\n6          23         นายทดสอบ ทดสอบ  ...     ต่ออายุ      Other\n7          22  นายนันทิพัฒน์ ทวะบุรี  ...     ต่ออายุ   Customer\n8          19  นายนันทวัฒน์ ข้าวสาลี  ...     ต่ออายุ   Customer\n9          18         นายทดสอบ ทดสอบ  ...     ต่ออายุ   Customer\n\n[10 rows x 7 columns]'; 1141)
+[2024-07-24T03:43:36.294+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 1
+[2024-07-24T03:43:36.317+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-07-24T03:43:36.319+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
