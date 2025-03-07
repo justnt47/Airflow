@@ -1,0 +1,12 @@
+logs/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+*.log
+*.bak
+*.swp
+*.tmp
+*.bak
+*.zip  
